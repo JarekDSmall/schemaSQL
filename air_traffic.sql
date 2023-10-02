@@ -33,11 +33,16 @@ CREATE TABLE Tickets (
   id SERIAL PRIMARY KEY,
   passenger_id INT REFERENCES Passengers(id),
   seat TEXT NOT NULL,
+  flights_id INT REFERENCES Flights(id)
+);
+
+CREATE TABLE Flights (
   departure TIMESTAMP NOT NULL,
   arrival TIMESTAMP NOT NULL,
   airline_id INT REFERENCES Airlines(id),
   departure_city_id INT REFERENCES Cities(id),
-  arrival_city_id INT REFERENCES Cities(id)
+  arrival_city_id INT REFERENCES Cities(id),
+  
 );
 
 -- Insert data into Countries table
