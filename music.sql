@@ -11,8 +11,7 @@ CREATE TABLE Songs (
   id SERIAL PRIMARY KEY,
   title TEXT NOT NULL,
   duration_in_seconds INTEGER NOT NULL,
-  release_date DATE NOT NULL,
-  album TEXT NOT NULL
+  release_date DATE NOT NULL
 );
 
 CREATE TABLE Artists (
@@ -25,6 +24,12 @@ CREATE TABLE Producers (
   name TEXT NOT NULL
 );
 
+CREATE TABLE Albums (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL
+
+)
+
 CREATE TABLE SongArtists (
   song_id INT REFERENCES Songs(id),
   artist_id INT REFERENCES Artists(id),
@@ -35,6 +40,12 @@ CREATE TABLE SongProducers (
   song_id INT REFERENCES Songs(id),
   producer_id INT REFERENCES Producers(id),
   PRIMARY KEY (song_id, producer_id)
+);
+
+CREATE TABLE SongAlbums (
+  song_id INT REFERENCES Songs(id),
+  album_id INT REFERENCES Albums(id),
+  PRIMARY KEY (song_id, album_id)
 );
 
 -- Insert data into Songs table
