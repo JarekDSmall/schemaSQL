@@ -21,6 +21,7 @@ CREATE TABLE Objects (
 CREATE TABLE Moons (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL
+  planet_id INT REFERENCES Planets(id) 
 );
 
 CREATE TABLE Planets (
